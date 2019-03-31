@@ -1,0 +1,41 @@
+{
+    "extends": "airbnb",
+    "settings": {
+        "import/resolver": {
+            "node": {
+                "paths": [
+                    "config",
+                    "modules"
+                ]
+            }
+        }
+    },
+    "rules": {
+        "no-unused-vars": [
+            "warn",
+            {
+                "args": "all"
+            }
+        ],
+        "linebreak-style": 0,
+        "import/no-unresolved": 0,
+        "import/extensions": 0,
+        "react/no-array-index-key": 0,
+        "no-use-before-define": "error",
+        "complexity": [
+            "error",
+            15
+        ],
+        "no-warning-comments": "warn",
+        "react/prefer-stateless-function": [
+            1,
+            {
+                "ignorePureComponents": true
+            }
+        ],
+        "react/require-default-props": 0,
+        "jsx-a11y/href-no-hash": [
+            0
+        ]
+    }
+}
