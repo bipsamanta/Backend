@@ -31,7 +31,13 @@ exports.isAvailable = (userName) => {
     }
     return false;
 }
-
-
+exports.checkAuthenticated = (req, res, next) => {
+    if (!req.header('Authentication')) return res.status(401).send({ message: 'Unauthorized Access' });
+    var token = req.header('Authentication').split(' ')[1];
+    var payload = jwt.decode(token, 'abc');
+    if (!payload) return res.status(401).send({ message: 'Unauthorized Access' });
+    req.userName = payload.subject;
+    next();
+}
 
 

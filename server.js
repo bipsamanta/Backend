@@ -3,6 +3,7 @@ const express = require('express');
 var cors = require('cors');
 const http = require('http');
 const cookieParser = require('cookie-parser');
+const Routes = require('./routes');
 
 
 const app = express();
@@ -12,7 +13,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cookieParser())
 
-const login = require('./login')(app);
+Routes(app);
+
 
 const httpServer = http.createServer(app);
 const port = process.env.PORT || 3001;

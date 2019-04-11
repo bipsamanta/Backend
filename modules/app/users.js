@@ -1,7 +1,9 @@
 
 var jwt = require('jwt-simple');
-const userInfo = require('./data');
-module.exports = function (app) {
+const express = require('express');
+const router = express.Router();
+const userInfo = require('./usersData');
+module.exports = (app) => {
     app.post('/register', (req, res) => {
         var userdata = req.body;
         if (userInfo.isAvailable(userdata.userName)) {
@@ -24,4 +26,9 @@ module.exports = function (app) {
         else { return res.status(401).send({ message: 'Invalid login' }) }
 
     })
+    app.get('/test', (req, res) => {
+        var payload = { data: 'test' };
+        res.status(200).send({ data: payload });
+    })
+    return router;
 }
